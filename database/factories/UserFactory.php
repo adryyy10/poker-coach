@@ -29,6 +29,10 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'is_coach' => $this->faker->boolean(),
+            'specialty' => $this->faker->randomElements(['cash games', 'MTTs', 'PLO', 'Spins'], 0),
+            'stakes' => $this->faker->randomElements(['micro', 'low', 'mid', 'high'], 0),
+            'price_per_hour' => $this->faker->randomFloat(2, 10, 500),
         ];
     }
 

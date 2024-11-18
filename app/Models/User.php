@@ -27,8 +27,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_coach',
+        'specialty',
+        'stakes',
+        'price_per_hour',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -49,6 +52,9 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'specialty' => 'array',
+            'stakes' => 'array',
+            'price_per_hour' => 'float',
         ];
     }
 }
