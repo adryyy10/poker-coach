@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use ApiPlatform\Laravel\Eloquent\Filter\EqualsFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\QueryParameter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
         new GetCollection(),
     ]
 )]
+#[QueryParameter(key: 'is_coach', filter: EqualsFilter::class, property: 'is_coach')]
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -52,6 +55,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_coach' => 'boolean',
             'specialty' => 'array',
             'stakes' => 'array',
             'price_per_hour' => 'float',
